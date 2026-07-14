@@ -44,6 +44,16 @@ export const projectImages: Record<string, ProjectImages> = {
       '/images/chronocancer/WhatsApp Image 2026-06-02 at 10.25.24 PM.jpeg',
     ],
   },
+  'Constituency Development Platform': {
+    folder: '/images/constituency',
+    count: 3,
+    thumbnail: '/images/constituency/Screenshot 2026-07-14 205223.png',
+    images: [
+      '/images/constituency/Screenshot 2026-07-14 205223.png',
+      '/images/constituency/Screenshot 2026-07-14 205350.png',
+      '/images/constituency/Screenshot 2026-07-14 205424.png',
+    ],
+  },
   'Labbdhi Tutorial\'s': {
     folder: '/images/noble classes',
     count: 3,
@@ -63,16 +73,6 @@ export const projectImages: Record<string, ProjectImages> = {
       '/images/petclinic/Screenshot 2026-07-14 024522.png',
       '/images/petclinic/Screenshot 2026-07-14 024548.png',
       '/images/petclinic/Screenshot 2026-07-14 024633.png',
-    ],
-  },
-  'Constituency Development Platform': {
-    folder: '/images/constituency',
-    count: 3,
-    thumbnail: '/images/constituency/Screenshot 2026-07-14 205223.png',
-    images: [
-      '/images/constituency/Screenshot 2026-07-14 205223.png',
-      '/images/constituency/Screenshot 2026-07-14 205350.png',
-      '/images/constituency/Screenshot 2026-07-14 205424.png',
     ],
   },
   'Prvaas': {

@@ -65,13 +65,14 @@ export default function CaseStudyModal({ project, onClose }: CaseStudyModalProps
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [onClose, scrollNext, scrollPrev]);
 
-  // Prevent body scroll
+  // Prevent body scroll only when a project is open
   useEffect(() => {
+    if (!project) return;
     document.body.style.overflow = 'hidden';
     return () => {
       document.body.style.overflow = '';
     };
-  }, []);
+  }, [project]);
 
   if (!project) return null;
 

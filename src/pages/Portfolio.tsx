@@ -7,6 +7,7 @@ import Projects from '@/components/portfolio/Projects';
 import Achievements from '@/components/portfolio/Achievements';
 import Contact from '@/components/portfolio/Contact';
 import Footer from '@/components/portfolio/Footer';
+import ErrorBoundary from '@/components/common/ErrorBoundary';
 
 export default function Portfolio() {
   return (
@@ -16,8 +17,12 @@ export default function Portfolio() {
         <Hero />
         <Marquee />
         <About />
-        <Skills />
-        <Projects />
+        <ErrorBoundary>
+          <Skills />
+        </ErrorBoundary>
+        <ErrorBoundary>
+          <Projects />
+        </ErrorBoundary>
         <Achievements />
         <Contact />
       </main>

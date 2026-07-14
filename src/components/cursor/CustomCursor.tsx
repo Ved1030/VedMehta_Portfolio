@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useRef, useMemo } from 'react';
+import { useEffect, useRef } from 'react';
 import { motion, useSpring, useMotionValue, useTransform } from 'motion/react';
 import { useCursor, type CursorVariant } from './CursorProvider';
 

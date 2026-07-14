@@ -210,58 +210,68 @@ export const projects: Project[] = [
   },
 ];
 
-export const skillCategories = [
+export interface Skill {
+  name: string;
+  level: number;
+  description: string;
+}
+
+export const skillCategories: {
+  title: string;
+  color: string;
+  skills: Skill[];
+}[] = [
   {
     title: 'Programming Languages',
     color: '#22D3EE',
     skills: [
-      { name: 'Python', level: 90 },
-      { name: 'JavaScript', level: 88 },
-      { name: 'Java', level: 75 },
-      { name: 'C++', level: 70 },
-      { name: 'C', level: 65 },
-      { name: 'SQL', level: 80 },
+      { name: 'Python', level: 90, description: 'Backend Development · Machine Learning · Automation · Data Analysis' },
+      { name: 'JavaScript', level: 88, description: 'Full Stack Development · ES6+ · Async Programming · DOM Manipulation' },
+      { name: 'Java', level: 75, description: 'Object-Oriented Programming · Collections · Multithreading' },
+      { name: 'C++', level: 70, description: 'Data Structures · Algorithms · Memory Management · Competitive Programming' },
+      { name: 'C', level: 65, description: 'Systems Programming · Low-Level Memory · Embedded Basics' },
+      { name: 'SQL', level: 80, description: 'Database Queries · Joins · Indexing · Query Optimization' },
     ],
   },
   {
     title: 'Web Development',
     color: '#60A5FA',
     skills: [
-      { name: 'React.js', level: 90 },
-      { name: 'Next.js', level: 85 },
-      { name: 'Node.js', level: 82 },
-      { name: 'Express.js', level: 80 },
-      { name: 'Django', level: 72 },
-      { name: 'Tailwind CSS', level: 92 },
+      { name: 'React.js', level: 90, description: 'Component Architecture · Hooks · State Management · Performance Optimization' },
+      { name: 'Next.js', level: 85, description: 'Server-Side Rendering · API Routes · Static Generation · App Router' },
+      { name: 'Node.js', level: 82, description: 'REST APIs · Event-Driven Architecture · Middleware · Stream Processing' },
+      { name: 'Express.js', level: 80, description: 'Routing · Middleware Chains · Error Handling · RESTful Design' },
+      { name: 'Django', level: 72, description: 'ORM · Admin Panel · Authentication · Scalable Backend Architecture' },
+      { name: 'Tailwind CSS', level: 92, description: 'Utility-First Styling · Responsive Design · Custom Themes · Animations' },
     ],
   },
   {
     title: 'Mobile Development',
     color: '#34D399',
     skills: [
-      { name: 'Flutter', level: 78 },
-      { name: 'React Native', level: 65 },
+      { name: 'Flutter', level: 78, description: 'Cross-Platform Apps · Dart · Widget Architecture · State Management' },
+      { name: 'React Native', level: 65, description: 'Mobile UI · Native Modules · Platform-Specific Code · Expo' },
     ],
   },
   {
     title: 'AI / Machine Learning',
     color: '#4FD1C5',
     skills: [
-      { name: 'TensorFlow', level: 75 },
-      { name: 'CNN', level: 80 },
-      { name: 'Explainable AI', level: 85 },
-      { name: 'Agentic AI', level: 78 },
+      { name: 'TensorFlow', level: 75, description: 'Deep Learning · Model Training · Neural Network Architecture · TensorBoard' },
+      { name: 'CNN', level: 80, description: 'Image Classification · Feature Extraction · Transfer Learning · Computer Vision' },
+      { name: 'Explainable AI', level: 85, description: 'Model Interpretability · SHAP · LIME · Decision Transparency · Visual Explanations' },
+      { name: 'Agentic AI', level: 78, description: 'Autonomous Agents · Tool Use · Multi-Step Reasoning · LLM Orchestration' },
     ],
   },
   {
     title: 'Tools & Platforms',
     color: '#F4C542',
     skills: [
-      { name: 'Git', level: 88 },
-      { name: 'GitHub', level: 90 },
-      { name: 'MongoDB', level: 78 },
-      { name: 'PostgreSQL', level: 75 },
-      { name: 'Supabase', level: 70 },
+      { name: 'Git', level: 88, description: 'Version Control · Branching Strategies · Merge Conflict Resolution · Rebase' },
+      { name: 'GitHub', level: 90, description: 'Code Review · CI/CD Pipelines · Actions · Project Management · Collaboration' },
+      { name: 'MongoDB', level: 78, description: 'Document Databases · Aggregation Pipeline · Indexing · Mongoose ODM' },
+      { name: 'PostgreSQL', level: 75, description: 'Relational Databases · Complex Queries · Migrations · Performance Tuning' },
+      { name: 'Supabase', level: 70, description: 'Authentication · Real-Time Subscriptions · Storage · Edge Functions' },
     ],
   },
 ];
