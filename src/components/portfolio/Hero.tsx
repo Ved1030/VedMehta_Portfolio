@@ -35,7 +35,7 @@ function AnimatedTitle() {
   return (
     <div className="mb-3">
       {/* Line 1 */}
-      <div className="font-heading text-[2.75rem] font-bold leading-[1.08] tracking-tight text-slate-text sm:text-6xl md:text-7xl lg:text-[4.25rem]">
+      <div className="font-heading text-5xl font-bold leading-[1.08] tracking-tight text-slate-text sm:text-6xl md:text-7xl lg:text-[4.25rem]">
         {line1.map((word, i) => (
           <motion.span
             key={i}
@@ -53,7 +53,7 @@ function AnimatedTitle() {
         ))}
       </div>
       {/* Line 2 */}
-      <div className="font-heading text-[2.75rem] font-bold leading-[1.08] tracking-tight sm:text-6xl md:text-7xl lg:text-[4.25rem]">
+      <div className="font-heading text-5xl font-bold leading-[1.08] tracking-tight sm:text-6xl md:text-7xl lg:text-[4.25rem]">
         {line2Words.map((word, i) => (
           <motion.span
             key={word}
@@ -106,7 +106,7 @@ function Typewriter() {
   }, [text, isDeleting, roleIdx]);
 
   return (
-    <span className="font-mono text-lg font-medium text-emerald md:text-xl">
+    <span className="font-mono text-base font-medium text-emerald sm:text-lg md:text-xl">
       {text}
       <span className="typewriter-cursor" />
     </span>
@@ -199,26 +199,26 @@ function StatCard({
       initial={{ opacity: 0, y: 20 }}
       animate={visible ? { opacity: 1, y: 0 } : {}}
       transition={{ delay: 0.1 + index * 0.1, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-      className="glass-card group rounded-xl px-5 py-4 text-center"
+      className="glass-card group rounded-xl px-3 py-3 text-center sm:px-5 sm:py-4"
       data-cursor="card"
     >
-      <div className="mb-2 flex items-center justify-center gap-2">
+      <div className="mb-2 flex items-center justify-center gap-1.5 sm:gap-2">
         <motion.div
           initial={{ scale: 0, rotate: -90 }}
           animate={visible ? { scale: 1, rotate: 0 } : {}}
           transition={{ delay: 0.3 + index * 0.1, type: 'spring', bounce: 0.4 }}
         >
           <Icon
-            className="h-4 w-4 transition-colors"
+            className="h-3.5 w-3.5 transition-colors sm:h-4 sm:w-4"
             style={{ color: stat.color }}
           />
         </motion.div>
-        <span className="font-heading text-2xl font-bold text-white">
+        <span className="font-heading text-xl font-bold text-white sm:text-2xl">
           {Number.isInteger(stat.value) ? Math.round(count) : count.toFixed(1)}
           {stat.suffix}
         </span>
       </div>
-      <span className="text-[10px] font-medium uppercase tracking-widest text-slate-muted/60">
+      <span className="text-[9px] font-medium uppercase tracking-widest text-slate-muted/60 sm:text-[10px]">
         {stat.label}
       </span>
     </motion.div>
@@ -341,7 +341,7 @@ function BioText() {
 
   return (
     <motion.p
-      className="mb-10 max-w-[540px] text-base leading-[1.8] text-slate-muted/70 mx-auto lg:mx-0"
+      className="mb-8 max-w-[320px] text-sm leading-[1.8] text-slate-muted/70 mx-auto sm:mb-10 sm:max-w-[440px] sm:text-base lg:mx-0 lg:max-w-[540px]"
     >
       {words.map((w, i) => (
         <motion.span
@@ -426,7 +426,7 @@ export default function Hero() {
       <HeroParticles />
 
       {/* Main Grid */}
-      <div className="relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-8 px-6 py-24 lg:grid-cols-[42%_58%] lg:gap-16 xl:gap-24">
+      <div className="relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-8 px-4 py-28 sm:px-6 sm:py-24 lg:grid-cols-[42%_58%] lg:gap-16 xl:gap-24">
 
         {/* LEFT — Portrait */}
         <motion.div
@@ -435,7 +435,7 @@ export default function Hero() {
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className="relative flex justify-center order-2 lg:order-1"
         >
-          <div className="relative h-[300px] w-[300px] sm:h-[360px] sm:w-[360px] md:h-[400px] md:w-[400px] lg:h-[440px] lg:w-[440px]">
+          <div className="relative h-[240px] w-[240px] sm:h-[300px] sm:w-[300px] md:h-[360px] md:w-[360px] lg:h-[440px] lg:w-[440px]">
             {/* Orbit rings */}
             <motion.div
               className="absolute inset-[-24px] rounded-full orbit-ring opacity-30"
@@ -507,8 +507,8 @@ export default function Hero() {
           className="text-center lg:text-left order-1 lg:order-2"
         >
           {/* Badge */}
-          <motion.div variants={item} className="mb-6 flex justify-center lg:justify-start">
-            <span className="inline-flex items-center gap-2 rounded-full border border-success/20 bg-success/[0.06] px-4 py-1.5 text-xs font-medium text-success">
+          <motion.div variants={item} className="mb-4 flex justify-center sm:mb-6 lg:justify-start">
+            <span className="inline-flex items-center gap-2 rounded-full border border-success/20 bg-success/[0.06] px-3 py-1.5 text-[10px] font-medium text-success sm:px-4 sm:text-xs">
               <span className="relative flex h-2 w-2">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-success opacity-60" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-success" />
@@ -520,10 +520,10 @@ export default function Hero() {
           {/* Location */}
           <motion.div
             variants={item}
-            className="mb-4 flex items-center justify-center gap-2 text-slate-muted/60 lg:justify-start"
+            className="mb-3 flex items-center justify-center gap-2 text-slate-muted/60 sm:mb-4 lg:justify-start"
           >
             <MapPin className="h-3.5 w-3.5 text-emerald/50" />
-            <span className="text-sm">{profile.location}</span>
+            <span className="text-xs sm:text-sm">{profile.location}</span>
           </motion.div>
 
           {/* Animated Title */}
@@ -532,7 +532,7 @@ export default function Hero() {
           {/* Typewriter */}
           <motion.div
             variants={item}
-            className="mb-8 h-8"
+            className="mb-6 h-6 sm:mb-8 sm:h-8"
             data-cursor="text"
           >
             <Typewriter />
@@ -544,14 +544,14 @@ export default function Hero() {
           {/* Buttons */}
           <motion.div
             variants={item}
-            className="mb-14 flex flex-col gap-4 sm:flex-row sm:justify-center lg:justify-start"
+            className="mb-10 flex flex-col gap-3 sm:flex-row sm:justify-center sm:gap-4 lg:justify-start lg:mb-14"
           >
             {/* Primary — Emerald */}
             <motion.a
               href="#projects"
               whileHover={{ scale: 1.04, y: -2 }}
               whileTap={{ scale: 0.97 }}
-              className="group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-[18px] bg-emerald px-7 py-3.5 text-sm font-semibold text-[#07131F] transition-shadow duration-300 hover:shadow-[0_0_40px_rgba(34,197,94,0.35)]"
+              className="group relative inline-flex w-full items-center justify-center gap-2 overflow-hidden rounded-[18px] bg-emerald px-7 py-3.5 text-sm font-semibold text-[#07131F] transition-shadow duration-300 hover:shadow-[0_0_40px_rgba(34,197,94,0.35)] sm:w-auto"
               data-cursor="button"
             >
               {/* Ripple */}
@@ -568,7 +568,7 @@ export default function Hero() {
               href="#contact"
               whileHover={{ scale: 1.04, y: -2 }}
               whileTap={{ scale: 0.97 }}
-              className="group inline-flex items-center justify-center gap-2 rounded-[18px] px-7 py-3.5 text-sm font-semibold text-white/80 hero-glass transition-all duration-300 hover:border-emerald/15 hover:text-white hover:shadow-[0_0_24px_rgba(34,197,94,0.08)]"
+              className="group inline-flex w-full items-center justify-center gap-2 rounded-[18px] px-7 py-3.5 text-sm font-semibold text-white/80 hero-glass transition-all duration-300 hover:border-emerald/15 hover:text-white hover:shadow-[0_0_24px_rgba(34,197,94,0.08)] sm:w-auto"
               data-cursor="button"
             >
               Get In Touch
@@ -577,7 +577,7 @@ export default function Hero() {
           </motion.div>
 
           {/* Stats */}
-          <motion.div variants={item} className="grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
+          <motion.div variants={item} className="grid grid-cols-2 gap-2 sm:gap-3 md:grid-cols-4 md:gap-4">
             {stats.map((stat, i) => (
               <StatCard key={stat.label} stat={stat} index={i} />
             ))}
@@ -586,7 +586,7 @@ export default function Hero() {
           {/* Mobile social */}
           <motion.div
             variants={item}
-            className="mt-8 flex items-center justify-center gap-3 lg:hidden"
+            className="mt-6 flex items-center justify-center gap-3 sm:mt-8 lg:hidden"
           >
             {[
               { icon: Github, href: profile.github, label: 'GitHub' },
@@ -616,7 +616,7 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 sm:bottom-8"
       >
         <motion.div
           animate={{ y: [0, 8, 0] }}

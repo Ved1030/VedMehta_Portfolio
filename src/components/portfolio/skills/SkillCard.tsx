@@ -50,21 +50,21 @@ export default function SkillCard({ skill, categoryColor, index }: SkillCardProp
           }}
         />
 
-        <div className="relative flex flex-col flex-1 p-5 sm:p-6">
+        <div className="relative flex flex-col flex-1 p-4 sm:p-5 md:p-6">
           <div
-            className="mb-4 flex items-center justify-center w-12 h-12 rounded-xl bg-white/[0.04] border border-white/[0.06] transition-all duration-300 group-hover:border-white/[0.12]"
+            className="mb-3 flex items-center justify-center w-10 h-10 rounded-xl bg-white/[0.04] border border-white/[0.06] transition-all duration-300 group-hover:border-white/[0.12] sm:mb-4 sm:w-12 sm:h-12"
             style={{
               boxShadow: isHovered ? `0 0 20px ${iconColor}15` : 'none',
             }}
           >
             {techIcon ? (
               <techIcon.icon
-                className="h-6 w-6 transition-all duration-300"
+                className="h-5 w-5 transition-all duration-300 sm:h-6 sm:w-6"
                 style={{ color: iconColor }}
               />
             ) : (
               <span
-                className="font-heading text-lg font-bold transition-all duration-300"
+                className="font-heading text-base font-bold transition-all duration-300 sm:text-lg"
                 style={{ color: iconColor }}
               >
                 {skill.name.charAt(0)}
@@ -72,11 +72,11 @@ export default function SkillCard({ skill, categoryColor, index }: SkillCardProp
             )}
           </div>
 
-          <h3 className="mb-1.5 font-heading text-sm font-bold text-white/90 group-hover:text-white transition-colors duration-300">
+          <h3 className="mb-1 font-heading text-xs font-bold text-white/90 group-hover:text-white transition-colors duration-300 sm:mb-1.5 sm:text-sm">
             {skill.name}
           </h3>
 
-          <p className="mb-4 text-[11px] leading-relaxed text-white/35 line-clamp-2 flex-1">
+          <p className="mb-3 text-[10px] leading-relaxed text-white/35 line-clamp-2 flex-1 sm:text-[11px]">
             {skill.description}
           </p>
 

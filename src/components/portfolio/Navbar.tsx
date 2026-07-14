@@ -21,6 +21,28 @@ export default function Navbar() {
     restDelta: 0.001,
   });
 
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.classList.add('menu-open');
+    } else {
+      document.body.classList.remove('menu-open');
+    }
+    return () => {
+      document.body.classList.remove('menu-open');
+    };
+  }, [isOpen]);
+
+  // Close menu on Escape key
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setIsOpen(false);
+    };
+    window.addEventListener('keydown', handleEscape);
+    return () => window.removeEventListener('keydown', handleEscape);
+  }, [isOpen]);
+
   useEffect(() => {
     const handleScroll = () => {
       if (!ticking.current) {
@@ -85,13 +107,16 @@ export default function Navbar() {
             ? 'bg-navy/80 backdrop-blur-xl border-b border-white/5 shadow-lg shadow-black/20'
             : 'bg-transparent',
         )}
+        role="navigation"
+        aria-label="Main navigation"
       >
-        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6 lg:h-20">
+        <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:h-16 sm:px-6 lg:h-20">
           {/* Logo */}
           <button
             onClick={() => scrollTo('#home')}
-            className="group relative text-xl font-heading font-bold tracking-tight"
+            className="group relative text-lg font-heading font-bold tracking-tight sm:text-xl"
             data-cursor="button"
+            aria-label="Go to top"
           >
             <span className="text-gradient-cyan">VED</span>
             <span className="text-white/90">.</span>
@@ -145,6 +170,8 @@ export default function Navbar() {
           <button
             onClick={() => setIsOpen(!isOpen)}
             className="relative z-50 flex h-10 w-10 items-center justify-center rounded-lg text-white/70 hover:text-white transition-colors md:hidden"
+            aria-label={isOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={isOpen}
           >
             <AnimatePresence mode="wait" initial={false}>
               {isOpen ? (
@@ -182,8 +209,11 @@ export default function Navbar() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
             className="fixed inset-0 z-[99] bg-navy/98 backdrop-blur-2xl md:hidden"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Mobile navigation"
           >
-            <div className="flex h-full flex-col items-center justify-center gap-8">
+            <div className="flex h-full flex-col items-center justify-center gap-6 px-6 sm:gap-8">
               {navLinks.map((link, i) => (
                 <motion.button
                   key={link.name}
@@ -192,7 +222,7 @@ export default function Navbar() {
                   transition={{ delay: i * 0.08, duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                   onClick={() => scrollTo(link.href)}
                   className={cn(
-                    'text-3xl font-heading font-bold transition-colors',
+                    'text-2xl font-heading font-bold transition-colors sm:text-3xl',
                     activeSection === link.href
                       ? 'text-cyan'
                       : 'text-white/50 hover:text-white',
@@ -205,11 +235,12 @@ export default function Navbar() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5 }}
+                className="w-full max-w-[240px]"
               >
                 <Button
                   asChild
                   size="lg"
-                  className="mt-4 rounded-full bg-cyan text-navy font-semibold px-8"
+                  className="w-full rounded-full bg-cyan text-navy font-semibold px-8"
                 >
                   <a
                     href={profile.resume}

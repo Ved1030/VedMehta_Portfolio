@@ -39,12 +39,12 @@ export default function Projects() {
   }, []);
 
   return (
-    <section id="projects" className="relative py-24 md:py-32 overflow-hidden">
+    <section id="projects" className="relative py-20 md:py-32 overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-navy via-navy-mid to-navy" />
       <div className="absolute top-0 left-0 h-px w-full bg-gradient-to-r from-transparent via-cyan/20 to-transparent" />
 
-      <div className="relative z-10 mx-auto max-w-[1400px] px-6">
+      <div className="relative z-10 mx-auto max-w-[1400px] px-4 sm:px-6">
         {/* Section Header */}
         <SectionHeading
           label="Showcase"
@@ -60,13 +60,13 @@ export default function Projects() {
           viewport={{ once: true, margin: '-50px' }}
           transition={{ delay: 0.1, duration: 0.6 }}
         >
-          <div className="mb-10">
+          <div className="mb-8 sm:mb-10">
             <motion.h3
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="font-heading text-2xl font-bold text-white"
+              className="font-heading text-xl font-bold text-white sm:text-2xl"
             >
               Featured Work
             </motion.h3>
@@ -75,14 +75,14 @@ export default function Projects() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1, duration: 0.5 }}
-              className="mt-2 text-sm text-white/40"
+              className="mt-2 text-xs text-white/40 sm:text-sm"
             >
               Selected projects across AI, Full Stack, Mobile and Web.
             </motion.p>
           </div>
 
           {/* Responsive Grid — 3 columns on desktop, 2 on tablet, 1 on mobile */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 lg:gap-8">
             {gridProjects.map((project, i) => (
               <ProjectGridCard
                 key={project.title}

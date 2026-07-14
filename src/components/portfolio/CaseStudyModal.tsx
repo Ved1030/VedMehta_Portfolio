@@ -82,7 +82,7 @@ export default function CaseStudyModal({ project, onClose }: CaseStudyModalProps
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className="fixed inset-0 z-[200] flex items-center justify-center p-4 md:p-8"
+        className="fixed inset-0 z-[200] flex items-center justify-center p-3 sm:p-4 md:p-8"
         onClick={onClose}
       >
         {/* Backdrop */}
@@ -94,34 +94,36 @@ export default function CaseStudyModal({ project, onClose }: CaseStudyModalProps
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.9, y: 40 }}
           transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-          className={`relative overflow-hidden rounded-3xl border border-white/[0.06] bg-[#0F2233]/95 backdrop-blur-2xl shadow-2xl transition-all duration-300 ${
+          className={`relative overflow-hidden rounded-2xl border border-white/[0.06] bg-[#0F2233]/95 backdrop-blur-2xl shadow-2xl transition-all duration-300 sm:rounded-3xl ${
             isFullscreen
-              ? 'fixed inset-4 z-50 max-w-none max-h-none'
-              : 'w-full max-w-6xl max-h-[90vh]'
+              ? 'fixed inset-2 z-50 max-w-none max-h-none sm:inset-4'
+              : 'w-full max-w-6xl max-h-[95vh] sm:max-h-[90vh]'
           }`}
           onClick={(e) => e.stopPropagation()}
         >
           {/* Close button */}
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 z-50 flex h-10 w-10 items-center justify-center rounded-full bg-white/5 border border-white/10 text-white/60 transition-all hover:bg-white/10 hover:text-white"
+            className="absolute top-3 right-3 z-50 flex h-9 w-9 items-center justify-center rounded-full bg-white/5 border border-white/10 text-white/60 transition-all hover:bg-white/10 hover:text-white sm:top-4 sm:right-4 sm:h-10 sm:w-10"
             data-cursor="button"
+            aria-label="Close modal"
           >
-            <X className="h-5 w-5" />
+            <X className="h-4 w-4 sm:h-5 sm:w-5" />
           </button>
 
           {/* Fullscreen toggle */}
           <button
             onClick={() => setIsFullscreen((prev) => !prev)}
-            className="absolute top-4 right-16 z-50 flex h-10 w-10 items-center justify-center rounded-full bg-white/5 border border-white/10 text-white/60 transition-all hover:bg-white/10 hover:text-white"
+            className="absolute top-3 right-12 z-50 flex h-9 w-9 items-center justify-center rounded-full bg-white/5 border border-white/10 text-white/60 transition-all hover:bg-white/10 hover:text-white sm:top-4 sm:right-16 sm:h-10 sm:w-10"
             data-cursor="button"
+            aria-label={isFullscreen ? 'Exit fullscreen' : 'Enter fullscreen'}
           >
-            {isFullscreen ? <Minimize2 className="h-5 w-5" /> : <Maximize2 className="h-5 w-5" />}
+            {isFullscreen ? <Minimize2 className="h-4 w-4 sm:h-5 sm:w-5" /> : <Maximize2 className="h-4 w-4 sm:h-5 sm:w-5" />}
           </button>
 
-          <div className="grid gap-0 lg:grid-cols-[1fr_1fr] max-h-[90vh]">
+          <div className="grid gap-0 lg:grid-cols-[1fr_1fr] max-h-[95vh] sm:max-h-[90vh]">
             {/* Left — Image Gallery with Embla */}
-            <div className="relative bg-[#16324A]/50 min-h-[300px] lg:min-h-[600px]">
+            <div className="relative min-h-[250px] bg-[#16324A]/50 sm:min-h-[300px] lg:min-h-[600px]">
               {hasImages ? (
                 <>
                   {/* Embla viewport */}
@@ -152,42 +154,45 @@ export default function CaseStudyModal({ project, onClose }: CaseStudyModalProps
                     <>
                       <button
                         onClick={scrollPrev}
-                        className="absolute left-4 top-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full bg-black/30 backdrop-blur-sm border border-white/10 text-white/70 transition-all hover:bg-black/50 hover:text-white z-10"
+                        className="absolute left-3 top-1/2 -translate-y-1/2 flex h-9 w-9 items-center justify-center rounded-full bg-black/30 backdrop-blur-sm border border-white/10 text-white/70 transition-all hover:bg-black/50 hover:text-white z-10 sm:left-4 sm:h-10 sm:w-10"
                         data-cursor="button"
+                        aria-label="Previous image"
                       >
-                        <ChevronLeft className="h-5 w-5" />
+                        <ChevronLeft className="h-4 w-4 sm:h-5 sm:w-5" />
                       </button>
                       <button
                         onClick={scrollNext}
-                        className="absolute right-4 top-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full bg-black/30 backdrop-blur-sm border border-white/10 text-white/70 transition-all hover:bg-black/50 hover:text-white z-10"
+                        className="absolute right-3 top-1/2 -translate-y-1/2 flex h-9 w-9 items-center justify-center rounded-full bg-black/30 backdrop-blur-sm border border-white/10 text-white/70 transition-all hover:bg-black/50 hover:text-white z-10 sm:right-4 sm:h-10 sm:w-10"
                         data-cursor="button"
+                        aria-label="Next image"
                       >
-                        <ChevronRight className="h-5 w-5" />
+                        <ChevronRight className="h-4 w-4 sm:h-5 sm:w-5" />
                       </button>
                     </>
                   )}
 
                   {/* Image counter */}
-                  <div className="absolute bottom-4 left-4 flex items-center gap-2 rounded-full bg-black/30 backdrop-blur-sm border border-white/10 px-3 py-1.5 z-10">
-                    <span className="text-xs font-medium text-white/70">
+                  <div className="absolute bottom-3 left-3 flex items-center gap-2 rounded-full bg-black/30 backdrop-blur-sm border border-white/10 px-2.5 py-1 sm:bottom-4 sm:left-4 sm:px-3 sm:py-1.5 z-10">
+                    <span className="text-[10px] font-medium text-white/70 sm:text-xs">
                       {selectedIndex + 1} / {images.length}
                     </span>
                   </div>
 
                   {/* Dots */}
                   {images.length <= 10 && (
-                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
+                    <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1 sm:bottom-4 sm:gap-1.5 z-10">
                       {scrollSnaps.map((_, i) => (
                         <button
                           key={i}
                           onClick={() => scrollTo(i)}
                           className="h-1.5 rounded-full transition-all duration-300"
                           style={{
-                            width: i === selectedIndex ? 24 : 6,
+                            width: i === selectedIndex ? 20 : 6,
                             backgroundColor:
                               i === selectedIndex ? project.color : 'rgba(255,255,255,0.3)',
                           }}
                           data-cursor="button"
+                          aria-label={`Go to image ${i + 1}`}
                         />
                       ))}
                     </div>
@@ -195,12 +200,12 @@ export default function CaseStudyModal({ project, onClose }: CaseStudyModalProps
 
                   {/* Thumbnail strip */}
                   {images.length > 1 && images.length <= 16 && (
-                    <div className="absolute bottom-12 left-0 right-0 z-10 flex gap-2 px-4 overflow-x-auto scrollbar-hide">
+                    <div className="absolute bottom-10 left-0 right-0 z-10 flex gap-1.5 px-3 overflow-x-auto scrollbar-hide sm:bottom-12 sm:gap-2 sm:px-4">
                       {images.map((img, i) => (
                         <button
                           key={i}
                           onClick={() => scrollTo(i)}
-                          className={`relative flex-shrink-0 w-16 h-10 rounded-lg overflow-hidden transition-all ${
+                          className={`relative flex-shrink-0 w-12 h-8 rounded-lg overflow-hidden transition-all sm:w-16 sm:h-10 ${
                             i === selectedIndex
                               ? 'ring-2 scale-105'
                               : 'ring-1 ring-white/10 opacity-50 hover:opacity-80'
@@ -210,6 +215,7 @@ export default function CaseStudyModal({ project, onClose }: CaseStudyModalProps
                               i === selectedIndex ? project.color : undefined,
                           }}
                           data-cursor="button"
+                          aria-label={`Select image ${i + 1}`}
                         >
                           <img
                             src={img}
@@ -225,7 +231,7 @@ export default function CaseStudyModal({ project, onClose }: CaseStudyModalProps
               ) : (
                 <div className="absolute inset-0 flex items-center justify-center">
                   <project.icon
-                    className="h-32 w-32"
+                    className="h-24 w-24 sm:h-32 sm:w-32"
                     style={{ color: `${project.color}30` }}
                   />
                 </div>
@@ -233,12 +239,12 @@ export default function CaseStudyModal({ project, onClose }: CaseStudyModalProps
             </div>
 
             {/* Right — Content */}
-            <div className="overflow-y-auto p-8 lg:p-10">
+            <div className="overflow-y-auto p-5 sm:p-6 lg:p-10">
               {/* Header */}
-              <div className="mb-6">
-                <div className="mb-3 flex items-center gap-3">
+              <div className="mb-4 sm:mb-6">
+                <div className="mb-2 flex items-center gap-2 sm:mb-3 sm:gap-3">
                   <span
-                    className="inline-flex items-center rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-wider"
+                    className="inline-flex items-center rounded-full px-2.5 py-0.5 text-[9px] font-bold uppercase tracking-wider sm:px-3 sm:py-1 sm:text-[10px]"
                     style={{
                       backgroundColor: `${project.color}20`,
                       color: project.color,
@@ -247,12 +253,12 @@ export default function CaseStudyModal({ project, onClose }: CaseStudyModalProps
                   >
                     {project.category}
                   </span>
-                  <span className="text-xs text-white/30">Case Study</span>
+                  <span className="text-[10px] text-white/30 sm:text-xs">Case Study</span>
                 </div>
-                <h2 className="font-heading text-3xl font-bold text-white mb-2">
+                <h2 className="mb-2 font-heading text-2xl font-bold text-white sm:text-3xl">
                   {project.title}
                 </h2>
-                <p className="text-lg font-medium" style={{ color: project.color }}>
+                <p className="text-base font-medium sm:text-lg" style={{ color: project.color }}>
                   {project.subtitle}
                 </p>
               </div>
@@ -283,11 +289,11 @@ export default function CaseStudyModal({ project, onClose }: CaseStudyModalProps
 
               {/* Technologies */}
               <Section title="Technologies">
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-1.5 sm:gap-2">
                   {project.tech.map((t) => (
                     <span
                       key={t}
-                      className="rounded-full px-3 py-1.5 text-xs font-medium border"
+                      className="rounded-full px-2.5 py-1 text-[10px] font-medium border sm:px-3 sm:py-1.5 sm:text-xs"
                       style={{
                         backgroundColor: `${project.color}10`,
                         color: project.color,
@@ -302,7 +308,7 @@ export default function CaseStudyModal({ project, onClose }: CaseStudyModalProps
 
               {/* Features */}
               <Section title="Key Features">
-                <ul className="space-y-2">
+                <ul className="space-y-1.5 sm:space-y-2">
                   {[
                     'Responsive design with mobile-first approach',
                     'Real-time data processing and updates',
@@ -312,10 +318,10 @@ export default function CaseStudyModal({ project, onClose }: CaseStudyModalProps
                   ].map((feature) => (
                     <li
                       key={feature}
-                      className="flex items-start gap-2 text-sm text-white/50"
+                      className="flex items-start gap-2 text-xs text-white/50 sm:text-sm"
                     >
                       <span
-                        className="mt-1.5 h-1.5 w-1.5 rounded-full shrink-0"
+                        className="mt-1 h-1 w-1 rounded-full shrink-0 sm:mt-1.5 sm:h-1.5 sm:w-1.5"
                         style={{ backgroundColor: project.color }}
                       />
                       {feature}
@@ -325,35 +331,35 @@ export default function CaseStudyModal({ project, onClose }: CaseStudyModalProps
               </Section>
 
               {/* Actions */}
-              <div className="mt-8 flex flex-wrap gap-3">
+              <div className="mt-6 flex flex-wrap gap-2 sm:mt-8 sm:gap-3">
                 <a
                   href={project.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-5 py-2.5 text-sm font-medium text-white/70 transition-all hover:border-white/20 hover:text-white"
+                  className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-medium text-white/70 transition-all hover:border-white/20 hover:text-white sm:gap-2 sm:px-5 sm:py-2.5 sm:text-sm"
                   data-cursor="button"
                 >
-                  <Github className="h-4 w-4" />
+                  <Github className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                   View Code
                 </a>
                 <a
                   href={project.live}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-bold text-navy transition-all"
+                  className="inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-xs font-bold text-navy transition-all sm:gap-2 sm:px-5 sm:py-2.5 sm:text-sm"
                   style={{
                     backgroundColor: project.color,
                     boxShadow: `0 0 20px ${project.color}30`,
                   }}
                   data-cursor="button"
                 >
-                  <ExternalLink className="h-4 w-4" />
+                  <ExternalLink className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                   Live Demo
                 </a>
               </div>
 
               {/* Keyboard hint */}
-              <div className="mt-6 text-[10px] text-white/20">
+              <div className="mt-4 text-[9px] text-white/20 sm:mt-6 sm:text-[10px]">
                 Press <kbd className="rounded bg-white/5 px-1.5 py-0.5 font-mono">←</kbd>{' '}
                 <kbd className="rounded bg-white/5 px-1.5 py-0.5 font-mono">→</kbd> to
                 navigate, <kbd className="rounded bg-white/5 px-1.5 py-0.5 font-mono">F</kbd>{' '}
@@ -370,11 +376,11 @@ export default function CaseStudyModal({ project, onClose }: CaseStudyModalProps
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <div className="mb-6">
-      <h3 className="mb-3 font-heading text-sm font-bold uppercase tracking-wider text-white/40">
+    <div className="mb-4 sm:mb-6">
+      <h3 className="mb-2 font-heading text-xs font-bold uppercase tracking-wider text-white/40 sm:mb-3 sm:text-sm">
         {title}
       </h3>
-      <div className="text-sm leading-relaxed text-white/50">{children}</div>
+      <div className="text-xs leading-relaxed text-white/50 sm:text-sm">{children}</div>
     </div>
   );
 }

@@ -71,12 +71,12 @@ export default function Contact() {
   ];
 
   return (
-    <section id="contact" className="relative py-24 md:py-32 overflow-hidden section-bg">
+    <section id="contact" className="relative py-20 md:py-32 overflow-hidden section-bg">
       <div className="absolute inset-0 bg-gradient-to-b from-navy via-navy-mid to-navy" />
       <div className="absolute top-0 left-0 h-px w-full bg-gradient-to-r from-transparent via-cyan/20 to-transparent" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-cyan/5 blur-[150px]" />
 
-      <div className="relative z-10 mx-auto max-w-7xl px-6">
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6">
         <SectionHeading
           label="Connect"
           title="Let's"
@@ -84,14 +84,14 @@ export default function Contact() {
           description="Ready to bring intelligent systems to life. Let's build something amazing together."
         />
 
-        <div className="grid gap-12 lg:grid-cols-2">
+        <div className="grid gap-8 sm:gap-12 lg:grid-cols-2">
           {/* Left — Contact Info */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="space-y-6"
+            className="space-y-4 sm:space-y-6"
           >
             {contactLinks.map((item, i) => (
               <motion.a
@@ -103,35 +103,35 @@ export default function Contact() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1, duration: 0.5 }}
-                className="group glass-card flex items-center gap-4 rounded-xl p-4"
+                className="group glass-card flex items-center gap-3 rounded-xl p-3 sm:gap-4 sm:p-4"
                 data-cursor="button"
               >
                 <div
-                  className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl transition-all group-hover:scale-110"
+                  className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl transition-all group-hover:scale-110 sm:h-12 sm:w-12"
                   style={{
                     backgroundColor: `${item.color}15`,
                     color: item.color,
                   }}
                 >
-                  <item.icon className="h-5 w-5" />
+                  <item.icon className="h-4 w-4 sm:h-5 sm:w-5" />
                 </div>
-                <div>
-                  <span className="text-xs font-medium uppercase tracking-wider text-white/30">
+                <div className="min-w-0">
+                  <span className="text-[10px] font-medium uppercase tracking-wider text-white/30 sm:text-xs">
                     {item.label}
                   </span>
-                  <p className="font-medium text-white/70 group-hover:text-white transition-colors">
+                  <p className="truncate text-sm font-medium text-white/70 group-hover:text-white transition-colors">
                     {item.value}
                   </p>
                 </div>
               </motion.a>
             ))}
 
-            <div className="pt-4">
+            <div className="pt-2 sm:pt-4">
               <MagneticElement strength={0.15}>
                 <Button
                   asChild
                   size="lg"
-                  className="rounded-full bg-cyan hover:bg-cyan-hover text-navy font-semibold px-8 py-6 gap-2 transition-all hover:shadow-glow-cyan-lg"
+                  className="rounded-full bg-cyan hover:bg-cyan-hover text-navy font-semibold px-6 py-5 gap-2 transition-all hover:shadow-glow-cyan-lg sm:px-8 sm:py-6"
                   data-cursor="button"
                 >
                   <a href={`mailto:${profile.email}`}>
@@ -150,10 +150,10 @@ export default function Contact() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <div className="glass-card rounded-3xl p-8">
-              <div className="mb-6 flex items-center gap-2">
-                <Sparkles className="h-5 w-5 text-gold" />
-                <span className="font-heading text-lg font-bold text-white">
+            <div className="glass-card rounded-2xl p-5 sm:rounded-3xl sm:p-8">
+              <div className="mb-4 flex items-center gap-2 sm:mb-6">
+                <Sparkles className="h-4 w-4 text-gold sm:h-5 sm:w-5" />
+                <span className="font-heading text-base font-bold text-white sm:text-lg">
                   Send a Message
                 </span>
               </div>
@@ -161,7 +161,7 @@ export default function Contact() {
               <Form {...form}>
                 <form
                   onSubmit={form.handleSubmit(onSubmit)}
-                  className="space-y-5"
+                  className="space-y-4 sm:space-y-5"
                 >
                   <FormField
                     control={form.control}
@@ -207,7 +207,7 @@ export default function Contact() {
                           <Textarea
                             placeholder="Tell me about your project..."
                             {...field}
-                            className="min-h-[140px] border-white/10 bg-white/5 text-white placeholder:text-white/20 focus:border-cyan/50 focus:ring-cyan/20 resize-none"
+                            className="min-h-[120px] border-white/10 bg-white/5 text-white placeholder:text-white/20 focus:border-cyan/50 focus:ring-cyan/20 resize-none sm:min-h-[140px]"
                           />
                         </FormControl>
                         <FormMessage />
@@ -218,7 +218,7 @@ export default function Contact() {
                   <MagneticElement strength={0.15} className="w-full">
                     <Button
                       type="submit"
-                      className="w-full rounded-xl bg-gradient-to-r from-cyan to-teal py-6 text-base font-bold text-navy transition-all hover:shadow-glow-cyan-lg"
+                      className="w-full rounded-xl bg-gradient-to-r from-cyan to-teal py-5 text-sm font-bold text-navy transition-all hover:shadow-glow-cyan-lg sm:py-6 sm:text-base"
                       data-cursor="button"
                     >
                       <Send className="mr-2 h-4 w-4" />

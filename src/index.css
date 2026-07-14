@@ -37,6 +37,8 @@
     color: #F8FAFC;
     font-feature-settings: 'cv11', 'ss01', 'ss03';
     cursor: none;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
   }
 
   @media (pointer: coarse) {
@@ -52,7 +54,9 @@
   }
 
   html {
-    scroll-behavior: auto;
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+    -webkit-text-size-adjust: 100%;
   }
 
   ::selection {
@@ -250,4 +254,48 @@
 .featured-swiper-prev:active,
 .featured-swiper-next:active {
   transform: translateY(-50%) scale(0.95);
+}
+
+/* ─── Responsive Overrides ─── */
+@media (max-width: 640px) {
+  .hero-grid {
+    background-size: 48px 48px;
+  }
+}
+
+/* Hide scrollbar for horizontal scroll containers */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Smooth scroll for mobile */
+@supports (-webkit-touch-callout: none) {
+  body {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Prevent horizontal overflow globally */
+#root {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* Lock body scroll when menu is open */
+body.menu-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+}
+
+/* Touch-friendly tap targets */
+@media (pointer: coarse) {
+  button, a, [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
 }

@@ -100,7 +100,7 @@ export default function ProjectGridCard({ project, index, onCaseStudy }: Project
         duration: 0.5,
         ease: [0.22, 1, 0.36, 1],
       }}
-      className="perspective-1000 h-[420px]"
+      className="perspective-1000"
     >
       <motion.div
         ref={cardRef}
@@ -121,7 +121,7 @@ export default function ProjectGridCard({ project, index, onCaseStudy }: Project
         onKeyDown={handleCardKeyDown}
         tabIndex={hasLiveUrl ? 0 : undefined}
         role={hasLiveUrl ? 'link' : undefined}
-        className={`group relative flex flex-col h-full rounded-[22px] border border-white/[0.06] bg-[#0F2233]/60 backdrop-blur-sm overflow-hidden transition-[border-color,box-shadow] duration-500 hover:border-white/[0.12]${hasLiveUrl ? ' cursor-pointer' : ''}`}
+        className={`group relative flex flex-col rounded-[22px] border border-white/[0.06] bg-[#0F2233]/60 backdrop-blur-sm overflow-hidden transition-[border-color,box-shadow] duration-500 hover:border-white/[0.12]${hasLiveUrl ? ' cursor-pointer' : ''}`}
         style={{
           boxShadow: isHovered
             ? `0 16px 48px ${glowColor}15, 0 0 0 1px ${glowColor}10`
@@ -136,8 +136,8 @@ export default function ProjectGridCard({ project, index, onCaseStudy }: Project
           }}
         />
 
-        {/* Image Area — fixed 200px height for 16:9 at card width */}
-        <div className="relative h-[200px] shrink-0 overflow-hidden bg-[#16324A]/50">
+        {/* Image Area */}
+        <div className="relative h-[160px] shrink-0 overflow-hidden bg-[#16324A]/50 sm:h-[200px]">
           {project.thumbnail ? (
             <>
               <img
@@ -167,7 +167,7 @@ export default function ProjectGridCard({ project, index, onCaseStudy }: Project
           ) : (
             <div className="absolute inset-0 flex items-center justify-center">
               <project.icon
-                className="h-12 w-12 transition-all duration-500 group-hover:scale-110"
+                className="h-10 w-10 transition-all duration-500 group-hover:scale-110 sm:h-12 sm:w-12"
                 style={{ color: `${project.color}50` }}
               />
             </div>
@@ -177,9 +177,9 @@ export default function ProjectGridCard({ project, index, onCaseStudy }: Project
           <div className="absolute inset-0 bg-gradient-to-t from-[#0F2233] via-transparent to-transparent opacity-40 pointer-events-none" />
 
           {/* Category badge */}
-          <div className="absolute top-3 left-3 z-10">
+          <div className="absolute top-2.5 left-2.5 z-10 sm:top-3 sm:left-3">
             <span
-              className="inline-flex items-center rounded-full px-2.5 py-1 text-[9px] font-bold uppercase tracking-wider backdrop-blur-md"
+              className="inline-flex items-center rounded-full px-2 py-0.5 text-[8px] font-bold uppercase tracking-wider backdrop-blur-md sm:px-2.5 sm:py-1 sm:text-[9px]"
               style={{
                 backgroundColor: `${glowColor}20`,
                 color: glowColor,
@@ -195,7 +195,7 @@ export default function ProjectGridCard({ project, index, onCaseStudy }: Project
             <motion.div
               initial={{ opacity: 0, y: 4 }}
               animate={{ opacity: 1, y: 0 }}
-              className="absolute bottom-2.5 right-2.5 z-10 rounded-full bg-black/50 backdrop-blur-sm px-2 py-0.5 text-[9px] font-medium text-white/60"
+              className="absolute bottom-2 right-2 z-10 rounded-full bg-black/50 backdrop-blur-sm px-2 py-0.5 text-[9px] font-medium text-white/60"
             >
               {currentImageIdx + 1}/{images.length}
             </motion.div>
@@ -203,23 +203,23 @@ export default function ProjectGridCard({ project, index, onCaseStudy }: Project
         </div>
 
         {/* Content */}
-        <div className="relative flex flex-col flex-1 p-5 min-h-0">
-          <h3 className="mb-1 font-heading text-base font-bold text-white leading-tight">
+        <div className="relative flex flex-col flex-1 p-4 min-h-0 sm:p-5">
+          <h3 className="mb-1 font-heading text-sm font-bold text-white leading-tight sm:text-base">
             {project.title}
           </h3>
           <p
-            className="mb-1.5 text-xs font-medium"
+            className="mb-1 text-[11px] font-medium sm:mb-1.5 sm:text-xs"
             style={{ color: glowColor }}
           >
             {project.subtitle}
           </p>
-          <p className="mb-3 text-xs leading-relaxed text-white/35 line-clamp-2 flex-1">
+          <p className="mb-2.5 text-[11px] leading-relaxed text-white/35 line-clamp-2 flex-1 sm:mb-3">
             {project.description}
           </p>
 
           {/* Tech chips */}
           <motion.div
-            className="flex flex-wrap gap-1.5 mb-3"
+            className="mb-2.5 flex flex-wrap gap-1 sm:mb-3 sm:gap-1.5"
             initial={false}
             animate={{
               opacity: isHovered ? 1 : 0.5,
@@ -230,13 +230,13 @@ export default function ProjectGridCard({ project, index, onCaseStudy }: Project
             {project.tech.slice(0, 3).map((t) => (
               <span
                 key={t}
-                className="rounded-full px-2 py-0.5 text-[9px] font-medium text-white/45 border border-white/5 bg-white/[0.04] transition-colors duration-300 group-hover:border-white/10 group-hover:text-white/55"
+                className="rounded-full px-1.5 py-0.5 text-[8px] font-medium text-white/45 border border-white/5 bg-white/[0.04] transition-colors duration-300 group-hover:border-white/10 group-hover:text-white/55 sm:px-2 sm:text-[9px]"
               >
                 {t}
               </span>
             ))}
             {project.tech.length > 3 && (
-              <span className="rounded-full px-2 py-0.5 text-[9px] font-medium text-white/20">
+              <span className="rounded-full px-1.5 py-0.5 text-[8px] font-medium text-white/20 sm:text-[9px]">
                 +{project.tech.length - 3}
               </span>
             )}
@@ -244,7 +244,7 @@ export default function ProjectGridCard({ project, index, onCaseStudy }: Project
 
           {/* Actions — slide up on hover */}
           <motion.div
-            className="flex items-center gap-2"
+            className="flex items-center gap-1.5 sm:gap-2"
             initial={false}
             animate={{ opacity: isHovered ? 1 : 0, y: isHovered ? 0 : 12 }}
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
@@ -253,18 +253,18 @@ export default function ProjectGridCard({ project, index, onCaseStudy }: Project
               href={project.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-[10px] font-medium text-white/50 transition-all hover:border-white/20 hover:text-white"
+              className="flex items-center gap-1 rounded-full border border-white/10 bg-white/5 px-2.5 py-1.5 text-[9px] font-medium text-white/50 transition-all hover:border-white/20 hover:text-white sm:gap-1.5 sm:px-3 sm:text-[10px]"
               data-cursor="button"
               onClick={(e) => e.stopPropagation()}
             >
-              <Github className="h-3 w-3" />
+              <Github className="h-2.5 w-2.5 sm:h-3 sm:w-3" />
               Code
             </a>
             <a
               href={project.live}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 rounded-full px-3 py-1.5 text-[10px] font-bold transition-all"
+              className="flex items-center gap-1 rounded-full px-2.5 py-1.5 text-[9px] font-bold transition-all sm:gap-1.5 sm:px-3 sm:text-[10px]"
               style={{
                 backgroundColor: `${glowColor}15`,
                 color: glowColor,
@@ -273,7 +273,7 @@ export default function ProjectGridCard({ project, index, onCaseStudy }: Project
               data-cursor="button"
               onClick={(e) => e.stopPropagation()}
             >
-              <ExternalLink className="h-3 w-3" />
+              <ExternalLink className="h-2.5 w-2.5 sm:h-3 sm:w-3" />
               Live
             </a>
             <button
@@ -281,11 +281,11 @@ export default function ProjectGridCard({ project, index, onCaseStudy }: Project
                 e.stopPropagation();
                 onCaseStudy(project);
               }}
-              className="flex items-center gap-1 rounded-full px-3 py-1.5 text-[10px] font-medium text-white/40 transition-all hover:text-white/70"
+              className="flex items-center gap-1 rounded-full px-2.5 py-1.5 text-[9px] font-medium text-white/40 transition-all hover:text-white/70 sm:text-[10px]"
               data-cursor="button"
             >
               Case Study
-              <ArrowUpRight className="h-2.5 w-2.5" />
+              <ArrowUpRight className="h-2 w-2 sm:h-2.5 sm:w-2.5" />
             </button>
           </motion.div>
         </div>
