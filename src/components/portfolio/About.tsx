@@ -69,7 +69,7 @@ export default function About() {
               </div>
               <div className="flex items-center gap-2 rounded-lg border border-white/5 bg-white/5 px-4 py-2">
                 <span className="h-2 w-2 rounded-full bg-success" />
-                <span className="text-sm font-medium text-white/70">GPA: 8.5/10</span>
+                <span className="text-sm font-medium text-white/70">GPA: 9.525 /10</span>
               </div>
             </div>
           </motion.div>

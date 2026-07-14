@@ -289,24 +289,6 @@ export const skillCategories = [
   },
 ];
 
-export const experiences = [
-  {
-    company: 'Tech Solutions Pvt Ltd',
-    role: 'Full Stack Web Developer Intern',
-    period: '2025 - Present',
-    location: 'Mumbai, India',
-    description:
-      'Building full-stack platforms and integrating enterprise-level solutions for client project management.',
-    responsibilities: [
-      'Developed ClientSphere Management System for streamlined project management',
-      'Built full-stack platform including dashboards and task tracking',
-      'Integrated REST APIs and developed secure client data handling systems',
-      'Implemented responsive designs with Tailwind CSS and PostgreSQL',
-    ],
-    tech: ['Next.js', 'React.js', 'Node.js', 'PostgreSQL', 'Tailwind CSS'],
-  },
-];
-
 export const achievements = [
   {
     title: 'CSMIT Hackathon',
@@ -343,36 +325,11 @@ export const achievements = [
   },
 ];
 
-export const testimonials = [
-  {
-    name: 'Prof. Ananya Sharma',
-    role: 'IT Department, Mumbai University',
-    content:
-      'Ved demonstrates exceptional problem-solving abilities and a deep understanding of AI systems. His work on explainable AI is impressive for a student at his level.',
-    avatar: 'AS',
-  },
-  {
-    name: 'Rohan Patel',
-    role: 'Hackathon Teammate',
-    content:
-      'Working with Ved on AURA was incredible. His ability to architect complex multimodal systems and deliver under tight deadlines is remarkable.',
-    avatar: 'RP',
-  },
-  {
-    name: 'Priya Desai',
-    role: 'Tech Solutions Pvt Ltd',
-    content:
-      'Ved brought fresh perspectives to our full-stack development team. His enthusiasm for building scalable systems and attention to code quality stood out.',
-    avatar: 'PD',
-  },
-];
-
 export const navLinks = [
   { name: 'Home', href: '#home' },
   { name: 'About', href: '#about' },
   { name: 'Skills', href: '#skills' },
   { name: 'Projects', href: '#projects' },
-  { name: 'Experience', href: '#experience' },
   { name: 'Achievements', href: '#achievements' },
   { name: 'Contact', href: '#contact' },
 ];

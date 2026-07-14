@@ -44,13 +44,6 @@ export const projectImages: Record<string, ProjectImages> = {
       '/images/chronocancer/WhatsApp Image 2026-06-02 at 10.25.24 PM.jpeg',
     ],
   },
-  'GlamSpot': {
-    folder: '/images/glam',
-    count: 0,
-    thumbnail: null,
-    images: [
-    ],
-  },
   'Noble Classes': {
     folder: '/images/noble classes',
     count: 3,
