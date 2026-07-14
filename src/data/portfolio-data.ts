@@ -37,7 +37,7 @@ export const stats = [
   { label: 'Projects Built', value: 9, suffix: '+', color: '#22D3EE' },
   { label: 'Technologies', value: 15, suffix: '+', color: '#60A5FA' },
   { label: 'Hackathons', value: 3, suffix: '', color: '#F4C542' },
-  { label: 'GPA', value: 8.5, suffix: '', color: '#7DD3A6' },
+  { label: 'GPA', value: 9.525, suffix: '', color: '#7DD3A6' },
 ];
 
 export const techStack = [

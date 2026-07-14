@@ -6,10 +6,9 @@ import ProjectGridCard from './ProjectGridCard';
 import CaseStudyModal from './CaseStudyModal';
 import { projects } from '@/data/portfolio-data';
 
-const HIDDEN_PROJECTS = ['AURA', 'TrustWealth AI'];
+const HIDDEN_PROJECTS = ['AURA', 'TrustWealth AI', 'ChronoCancer AI'];
 
 const GRID_ORDER = [
-  'ChronoCancer AI',
   'Constituency Development Platform',
   'ZipDrop',
   'SkillLab',
