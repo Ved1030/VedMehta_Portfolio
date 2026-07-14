@@ -76,6 +76,19 @@ export default function ProjectGridCard({ project, index, onCaseStudy }: Project
   };
 
   const glowColor = categoryColors[project.category] || project.color;
+  const hasLiveUrl = project.live && project.live !== '#';
+
+  const handleCardClick = () => {
+    if (hasLiveUrl) {
+      window.open(project.live, '_blank', 'noopener,noreferrer');
+    }
+  };
+
+  const handleCardKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' && hasLiveUrl) {
+      window.open(project.live, '_blank', 'noopener,noreferrer');
+    }
+  };
 
   return (
     <motion.div
@@ -104,7 +117,11 @@ export default function ProjectGridCard({ project, index, onCaseStudy }: Project
           scale: isHovered ? 1.02 : 1,
         }}
         transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-        className="group relative flex flex-col h-full rounded-[22px] border border-white/[0.06] bg-[#0F2233]/60 backdrop-blur-sm overflow-hidden transition-[border-color,box-shadow] duration-500 hover:border-white/[0.12]"
+        onClick={handleCardClick}
+        onKeyDown={handleCardKeyDown}
+        tabIndex={hasLiveUrl ? 0 : undefined}
+        role={hasLiveUrl ? 'link' : undefined}
+        className={`group relative flex flex-col h-full rounded-[22px] border border-white/[0.06] bg-[#0F2233]/60 backdrop-blur-sm overflow-hidden transition-[border-color,box-shadow] duration-500 hover:border-white/[0.12]${hasLiveUrl ? ' cursor-pointer' : ''}`}
         style={{
           boxShadow: isHovered
             ? `0 16px 48px ${glowColor}15, 0 0 0 1px ${glowColor}10`

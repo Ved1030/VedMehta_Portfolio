@@ -37,6 +37,7 @@ export default function FeaturedProject({ project, index, onCaseStudy }: Feature
   const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ['-2deg', '2deg']);
 
   const allImages = projectImages[project.title]?.images || [];
+  const hasLiveUrl = project.live && project.live !== '#';
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!cardRef.current) return;
@@ -49,6 +50,18 @@ export default function FeaturedProject({ project, index, onCaseStudy }: Feature
     x.set(0);
     y.set(0);
     setIsHovered(false);
+  };
+
+  const handleCardClick = () => {
+    if (hasLiveUrl) {
+      window.open(project.live, '_blank', 'noopener,noreferrer');
+    }
+  };
+
+  const handleCardKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' && hasLiveUrl) {
+      window.open(project.live, '_blank', 'noopener,noreferrer');
+    }
   };
 
   return (
@@ -65,7 +78,11 @@ export default function FeaturedProject({ project, index, onCaseStudy }: Feature
         onMouseMove={handleMouseMove}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={handleMouseLeave}
-        className="group relative max-h-[520px] rounded-[22px] border border-white/[0.06] bg-[#0F2233]/80 backdrop-blur-sm overflow-hidden transition-all duration-500"
+        onClick={handleCardClick}
+        onKeyDown={handleCardKeyDown}
+        tabIndex={hasLiveUrl ? 0 : undefined}
+        role={hasLiveUrl ? 'link' : undefined}
+        className={`group relative max-h-[520px] rounded-[22px] border border-white/[0.06] bg-[#0F2233]/80 backdrop-blur-sm overflow-hidden transition-all duration-500${hasLiveUrl ? ' cursor-pointer' : ''}`}
         style={{
           boxShadow: isHovered
             ? `0 16px 60px ${project.color}12, 0 0 0 1px ${project.color}08`
@@ -291,6 +308,7 @@ export default function FeaturedProject({ project, index, onCaseStudy }: Feature
                 whileTap={{ scale: 0.98 }}
                 className="group/btn inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-medium text-white/65 transition-all hover:border-white/20 hover:text-white"
                 data-cursor="button"
+                onClick={(e) => e.stopPropagation()}
               >
                 <Github className="h-3.5 w-3.5" />
                 GitHub
@@ -309,6 +327,7 @@ export default function FeaturedProject({ project, index, onCaseStudy }: Feature
                   boxShadow: `0 0 16px ${project.color}25`,
                 }}
                 data-cursor="button"
+                onClick={(e) => e.stopPropagation()}
               >
                 <ExternalLink className="h-3.5 w-3.5" />
                 Live Demo
@@ -316,7 +335,10 @@ export default function FeaturedProject({ project, index, onCaseStudy }: Feature
               </motion.a>
 
               <motion.button
-                onClick={() => onCaseStudy(project)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onCaseStudy(project);
+                }}
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.98 }}
                 className="group/btn inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-medium text-white/65 transition-all hover:border-white/20 hover:text-white"

@@ -2,41 +2,31 @@
 import { useState, useCallback, useMemo } from 'react';
 import { motion } from 'motion/react';
 import SectionHeading from '@/components/common/SectionHeading';
-import FeaturedProject from './FeaturedProject';
 import ProjectGridCard from './ProjectGridCard';
 import CaseStudyModal from './CaseStudyModal';
 import { projects } from '@/data/portfolio-data';
 
-// Hide these from the UI
-const HIDDEN_PROJECTS = ['Constituency Dev Platform', 'TrustWealth AI'];
+const HIDDEN_PROJECTS = ['AURA', 'TrustWealth AI'];
 
-// Featured project is always AURA
-const FEATURED_TITLE = 'AURA';
-
-// Grid ordering: 3 columns × 2 rows = 6 projects
 const GRID_ORDER = [
+  'ChronoCancer AI',
+  'Constituency Development Platform',
   'ZipDrop',
   'SkillLab',
   'Prvaas',
-  'Pet Clinic',
-  'Noble Classes',
-  'ChronoCancer AI',
+  'OzoneVets',
+  "Labbdhi Tutorial's",
 ];
 
 export default function Projects() {
   const [caseStudyProject, setCaseStudyProject] = useState<typeof projects[0] | null>(null);
-
-  const featuredProject = useMemo(
-    () => projects.find((p) => p.title === FEATURED_TITLE) || projects[0],
-    [],
-  );
 
   const gridProjects = useMemo(() => {
     return GRID_ORDER
       .map((title) => projects.find((p) => p.title === title))
       .filter(
         (p): p is (typeof projects)[0] =>
-          p !== undefined && !HIDDEN_PROJECTS.includes(p.title) && p.title !== FEATURED_TITLE,
+          p !== undefined && !HIDDEN_PROJECTS.includes(p.title),
       );
   }, []);
 
@@ -63,29 +53,13 @@ export default function Projects() {
           description="Innovating at the intersection of AI, Web Development, and human-centric design."
         />
 
-        {/* Featured Project */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className="mb-16"
-        >
-          <FeaturedProject
-            project={featuredProject}
-            index={0}
-            onCaseStudy={handleCaseStudy}
-          />
-        </motion.div>
-
-        {/* Other Featured Work */}
+        {/* Section Title */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-50px' }}
           transition={{ delay: 0.1, duration: 0.6 }}
         >
-          {/* Section Title */}
           <div className="mb-10">
             <motion.h3
               initial={{ opacity: 0, y: 16 }}
@@ -94,7 +68,7 @@ export default function Projects() {
               transition={{ duration: 0.5 }}
               className="font-heading text-2xl font-bold text-white"
             >
-              Other Featured Work
+              Featured Work
             </motion.h3>
             <motion.p
               initial={{ opacity: 0, y: 12 }}
