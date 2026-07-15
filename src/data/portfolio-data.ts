@@ -1,12 +1,13 @@
 import {
   Activity,
-  Smartphone,
+  Brain,
   Code2,
-  GraduationCap,
-  Stethoscope,
   Crown,
-  Zap,
+  GraduationCap,
   type LucideIcon,
+  Smartphone,
+  Stethoscope,
+  Zap,
 } from 'lucide-react';
 import { projectImages } from './image-manifest';
 
@@ -63,6 +64,13 @@ export interface Project {
   colorRgb: string;
   icon: LucideIcon;
   category: string;
+}
+
+export interface FeaturedProjectData extends Project {
+  tagline: string;
+  features: string[];
+  achievements: { label: string; value: string }[];
+  isPrivateGithub?: boolean;
 }
 
 // Helper to get images from manifest, with fallback
@@ -209,6 +217,56 @@ export const projects: Project[] = [
     category: 'Education',
   },
 ];
+
+const aura = getProjectImages('AURA');
+
+export const auraFeaturedProject: FeaturedProjectData = {
+  title: 'AURA',
+  subtitle: 'AI-Powered Multimodal Mental Wellness Assistant',
+  tagline: 'Intelligent wellness, powered by AI.',
+  description:
+    'An AI-powered multimodal mental wellness assistant that secures top positions across all domains and the specialized AI/ML track at CSMIT Hackathon. AURA combines cutting-edge machine learning with human-centric design to deliver personalized mental health insights and support.',
+  tech: [
+    'Next.js',
+    'React',
+    'TypeScript',
+    'Tailwind CSS',
+    'Python',
+    'FastAPI',
+    'MongoDB',
+    'PostgreSQL',
+    'Redis',
+    'Docker',
+    'AWS',
+    'AI/ML',
+  ],
+  github: 'https://github.com/Ved1030',
+  live: '#',
+  image: aura.thumbnail,
+  thumbnail: aura.thumbnail,
+  images: aura.images,
+  color: '#A855F7',
+  colorRgb: '168,85,247',
+  icon: Brain,
+  category: 'AI',
+  isPrivateGithub: true,
+  features: [
+    'AI-powered emotional analysis',
+    'Multimodal input processing',
+    'Personalized wellness insights',
+    'Real-time mood tracking',
+    'Secure data handling',
+    'Responsive cross-platform UI',
+    'Intelligent recommendation engine',
+    'Privacy-first architecture',
+  ],
+  achievements: [
+    { label: 'Hackathon Rank', value: '2nd Overall' },
+    { label: 'AI/ML Track', value: '1st Place' },
+    { label: 'Technologies', value: '12+' },
+    { label: 'Status', value: 'Award Winner' },
+  ],
+};
 
 export interface Skill {
   name: string;

@@ -1,12 +1,13 @@
 'use client';
-import { useState, useCallback, useMemo } from 'react';
 import { motion } from 'motion/react';
+import { useCallback, useMemo, useState } from 'react';
 import SectionHeading from '@/components/common/SectionHeading';
-import ProjectGridCard from './ProjectGridCard';
+import { auraFeaturedProject, projects } from '@/data/portfolio-data';
+import AuraShowcase from './AuraShowcase';
 import CaseStudyModal from './CaseStudyModal';
-import { projects } from '@/data/portfolio-data';
+import ProjectGridCard from './ProjectGridCard';
 
-const HIDDEN_PROJECTS = ['AURA', 'TrustWealth AI', 'ChronoCancer AI'];
+const HIDDEN_PROJECTS = ['TrustWealth AI', 'ChronoCancer AI'];
 
 const GRID_ORDER = [
   'Constituency Development Platform',
@@ -78,6 +79,11 @@ export default function Projects() {
             >
               Selected projects across AI, Full Stack, Mobile and Web.
             </motion.p>
+          </div>
+
+          {/* Featured Project Showcase */}
+          <div className="mb-10 sm:mb-14 lg:mb-16">
+            <AuraShowcase project={auraFeaturedProject} />
           </div>
 
           {/* Responsive Grid — 3 columns on desktop, 2 on tablet, 1 on mobile */}
